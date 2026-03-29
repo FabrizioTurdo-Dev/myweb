@@ -1069,6 +1069,88 @@ footer {
     transform: translateY(0);
 }
 
+/* HAMBURGER BUTTON */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 101;
+    flex-shrink: 0;
+}
+
+.nav-hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.nav-hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.nav-hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* MOBILE MENU OVERLAY */
+.nav-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10, 10, 15, 0.97);
+    backdrop-filter: blur(20px);
+    z-index: 98;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 40px 24px;
+}
+
+.nav-mobile-menu.open {
+    display: flex;
+}
+
+.nav-mobile-menu a {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: color 0.2s;
+    padding: 8px 0;
+    text-align: center;
+}
+
+.nav-mobile-menu a:hover {
+    color: var(--accent);
+}
+
+.nav-mobile-cta {
+    margin-top: 12px;
+    background: var(--accent) !important;
+    color: #000 !important;
+    padding: 14px 40px !important;
+    border-radius: 10px;
+    font-size: 18px !important;
+}
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
     .concept-layout {
@@ -1110,8 +1192,24 @@ footer {
         display: none;
     }
 
+    .nav-hamburger {
+        display: flex;
+    }
+
     .form-row {
         grid-template-columns: 1fr;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        padding: 32px 5%;
+    }
+
+    .footer-text {
+        font-size: 12px;
+        line-height: 1.6;
     }
 }
 
@@ -1132,8 +1230,8 @@ footer {
         flex-direction: column;
     }
 
-    .contact-form {
-        padding: 28px 20px;
+    .wa-box {
+        padding: 28px 20px 24px;
     }
 }
 

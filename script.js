@@ -1,4 +1,3 @@
-
 // ── CONFIGURACIÓN ──────────────────────────────────────────
 // Reemplazá este número con el tuyo (sin + ni espacios, con código de país)
 const WA_NUMBER = '5491154922800';
@@ -6,6 +5,27 @@ const WA_NUMBER = '5491154922800';
 const DEFAULT_MSG_ES = 'Hola! Me interesa mejorar mi posicionamiento local. ¿Podemos hablar?';
 const DEFAULT_MSG_EN = 'Hi! I\'m interested in improving my local presence. Can we talk?';
 // ───────────────────────────────────────────────────────────
+
+// HAMBURGER MENU
+function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+
+function closeMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+});
 
 // WHATSAPP OPEN
 function openWhatsApp() {
@@ -34,7 +54,6 @@ function setLang(lang) {
     });
     localStorage.setItem('lt-lang', lang);
 
-    // Update textarea placeholder on lang change
     if (waTextarea) {
         waTextarea.placeholder = lang === 'en'
             ? waTextarea.dataset.placeholderEn
@@ -64,9 +83,12 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const href = a.getAttribute('href');
+        if (href === '#') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            const target = document.querySelector(href);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
 });

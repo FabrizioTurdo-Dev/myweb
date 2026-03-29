@@ -49,10 +49,22 @@
       <li><a href="#concepto"><span data-lang="es">Concepto</span><span data-lang="en">Concept</span></a></li>
       <li><a href="#servicios"><span data-lang="es">Servicios</span><span data-lang="en">Services</span></a></li>
       <li><a href="#resultados"><span data-lang="es">Resultados</span><span data-lang="en">Results</span></a></li>
-      <li><a href="#contacto" class="nav-cta"><span data-lang="es">Consulta gratis</span><span data-lang="en">Free
-            Consultation</span></a></li>
+      <li><a href="#contacto" class="nav-cta"><span data-lang="es">Consulta gratis</span><span data-lang="en">Free Consultation</span></a></li>
     </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="#concepto" onclick="closeMenu()"><span data-lang="es">Concepto</span><span data-lang="en">Concept</span></a>
+    <a href="#servicios" onclick="closeMenu()"><span data-lang="es">Servicios</span><span data-lang="en">Services</span></a>
+    <a href="#resultados" onclick="closeMenu()"><span data-lang="es">Resultados</span><span data-lang="en">Results</span></a>
+    <a href="#contacto" class="nav-mobile-cta" onclick="closeMenu()"><span data-lang="es">Consulta gratis</span><span data-lang="en">Free Consultation</span></a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
