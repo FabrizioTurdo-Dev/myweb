@@ -5,28 +5,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Local Targeting Expert | Dominá Tu Mercado Local</title>
-  <meta name="description"
-    content="Especialista en Local Targeting. Desarrollo web de conversión + Estrategia Google Tridente. Llevamos tu negocio a dominar los resultados de búsqueda en tu zona.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
-    rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    gtag('config', 'GT-XXXXXXX'); // ID de Google Tag (unifica Ads y GA4)
-    gtag('config', 'G-7K7BFB7RE4'); // Tu ID de medición de GA4
-  </script>
+<link rel="preload" href="https://fonts.gstatic.com/s/syne/v24/8vlH7W4qz_5TvXvbxP31.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmc.woff2" as="font" type="font/woff2" crossorigin>
 
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <meta name="description"
+    content="Especialista en Local Targeting. Desarrollo web de conversión + Estrategia Google Tridente.">
   <meta name="google-site-verification" content="bo_nITFe-vMD1bQiMb9oWXpdgJ_Lv88Rv4sOGBnc-Jk" />
   <link rel="icon" href="./assets/logo2.png">
-
 </head>
 
 <body>
@@ -49,7 +46,8 @@
       <li><a href="#concepto"><span data-lang="es">Concepto</span><span data-lang="en">Concept</span></a></li>
       <li><a href="#servicios"><span data-lang="es">Servicios</span><span data-lang="en">Services</span></a></li>
       <li><a href="#resultados"><span data-lang="es">Resultados</span><span data-lang="en">Results</span></a></li>
-      <li><a href="#contacto" class="nav-cta"><span data-lang="es">Consulta gratis</span><span data-lang="en">Free Consultation</span></a></li>
+      <li><a href="#contacto" class="nav-cta"><span data-lang="es">Consulta gratis</span><span data-lang="en">Free
+            Consultation</span></a></li>
     </ul>
     <button class="nav-hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
       <span></span>
@@ -60,10 +58,14 @@
 
   <!-- MOBILE MENU -->
   <div class="nav-mobile-menu" id="mobileMenu">
-    <a href="#concepto" onclick="closeMenu()"><span data-lang="es">Concepto</span><span data-lang="en">Concept</span></a>
-    <a href="#servicios" onclick="closeMenu()"><span data-lang="es">Servicios</span><span data-lang="en">Services</span></a>
-    <a href="#resultados" onclick="closeMenu()"><span data-lang="es">Resultados</span><span data-lang="en">Results</span></a>
-    <a href="#contacto" class="nav-mobile-cta" onclick="closeMenu()"><span data-lang="es">Consulta gratis</span><span data-lang="en">Free Consultation</span></a>
+    <a href="#concepto" onclick="closeMenu()"><span data-lang="es">Concepto</span><span
+        data-lang="en">Concept</span></a>
+    <a href="#servicios" onclick="closeMenu()"><span data-lang="es">Servicios</span><span
+        data-lang="en">Services</span></a>
+    <a href="#resultados" onclick="closeMenu()"><span data-lang="es">Resultados</span><span
+        data-lang="en">Results</span></a>
+    <a href="#contacto" class="nav-mobile-cta" onclick="closeMenu()"><span data-lang="es">Consulta gratis</span><span
+        data-lang="en">Free Consultation</span></a>
   </div>
 
   <!-- HERO -->
@@ -617,7 +619,40 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>  
+  <script>
+    // Función para cargar el Tridente
+    function loadTrident() {
+      if (window.tridentLoaded) return; // Evita cargar dos veces
+      window.tridentLoaded = true;
+
+      // 1. Carga del script de Google
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-7K7BFB7RE4";
+      document.body.appendChild(script);
+
+      // 2. Configuración de gtag
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-7K7BFB7RE4');
+      gtag('config', 'GT-XXXXXXX'); // Tu ID de Ads
+
+      console.log('Tridente cargado post-interacción');
+    }
+
+    // Escuchar eventos de interacción real del usuario
+    const activityEvents = ['mousedown', 'mousemove', 'keydown', 'scroll', 'touchstart'];
+
+    activityEvents.forEach(event => {
+      window.addEventListener(event, loadTrident, { once: true, passive: true });
+    });
+
+    // Backup: Si el usuario no hace nada, cargar igual a los 5 segundos
+    setTimeout(loadTrident, 5000);
+  </script>
+
+  <script src="script.js" defer></script>
 
 </body>
 
